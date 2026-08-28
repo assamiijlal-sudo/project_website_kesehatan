@@ -16,22 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* Active link highlight on scroll */
-  const sections = document.querySelectorAll('main section[id]');
-  const navAnchors = document.querySelectorAll('.nav-links a');
+  /* Active link highlight berdasarkan halaman saat ini */
+const navAnchors = document.querySelectorAll('.nav-links a');
+const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
-  const setActive = () => {
-    let current = sections[0]?.id;
-    const scrollPos = window.scrollY + 120;
-    sections.forEach(sec => {
-      if (scrollPos >= sec.offsetTop) current = sec.id;
-    });
-    navAnchors.forEach(a => {
-      a.classList.toggle('active', a.getAttribute('href') === `#${current}`);
-    });
-  };
-  window.addEventListener('scroll', setActive);
-  setActive();
+navAnchors.forEach(a => {
+  const linkPage = a.getAttribute('href');
+  a.classList.toggle('active', linkPage === currentPage);
+});
 
   /* Animated stat counters */
   const stats = document.querySelectorAll('.stat-num');
