@@ -1,13 +1,14 @@
 :root {
-  --bg: #F3F6F2;
-  --bg-tint: #E9F0E9;
-  --ink: #1F2E28;
-  --ink-soft: #52655B;
-  --teal: #2F6F5E;
-  --teal-deep: #1E4A3F;
-  --red: #fa0000;
+  --bg: #FFF9F4;
+  --bg-tint: #FCEEE0;
+  --ink: #4A3B34;
+  --ink-soft: #8C776C;
+  --teal: #E0916F;
+  --teal-deep: #B85C3E;
+  --red: #D9A441;
   --card: #FFFFFF;
-  --line: #D7E2D9;
+  --line: #F0DECE;
+  --header-bg: rgba(255, 249, 244, 0.9);
 
   --font-display: "Fraunces", serif;
   --font-body: "Work Sans", sans-serif;
@@ -17,14 +18,15 @@
 
 /* Tema gelap: variabel di atas ditimpa saat <html data-theme="dark"> */
 [data-theme="dark"] {
-  --bg: #12201A;
-  --bg-tint: #17281F;
-  --ink: #E7EFEA;
-  --ink-soft: #9FB4A9;
-  --teal: #4FB596;
-  --teal-deep: #8FDCC0;
-  --card: #182920;
-  --line: #24382E;
+  --bg: #2B211C;
+  --bg-tint: #372A23;
+  --ink: #F6EAE1;
+  --ink-soft: #CBB6A8;
+  --teal: #E8A47F;
+  --teal-deep: #F1C79E;
+  --card: #362A23;
+  --line: #4A392F;
+  --header-bg: rgba(43, 33, 28, 0.85);
 }
 
 /* Transisi halus saat berpindah tema */
@@ -83,7 +85,7 @@ a { color: inherit; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(243, 246, 242, 0.9);
+  background: var(--header-bg);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
 }
