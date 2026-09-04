@@ -1,5 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  /* ---------- Dark mode toggle ---------- */
+  const themeToggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+
+  // terapkan tema yang tersimpan dari kunjungan sebelumnya
+  if (localStorage.getItem('theme') === 'dark') {
+    root.setAttribute('data-theme', 'dark');
+  }
+
+  themeToggle.addEventListener('click', () => {
+    const isDark = root.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      root.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+    } else {
+      root.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+
+  /* ---------- Loading indicator saat pindah halaman ---------- */
+  const pageLoader = document.getElementById('pageLoader');
+
+  // saat halaman ini selesai dimuat, tuntaskan animasi lalu sembunyikan
+  window.addEventListener('load', () => {
+    pageLoader.classList.remove('loading');
+    pageLoader.classList.add('done');
+    setTimeout(() => pageLoader.classList.remove('done'), 400);
+  });
+
+  // saat pengguna klik link ke halaman lain, tampilkan progress dulu
+  document.querySelectorAll('a[href$=".html"]').forEach(link => {
+    link.addEventListener('click', () => {
+      pageLoader.classList.remove('done');
+      pageLoader.classList.add('loading');
+    });
+  });
+
   /* Mobile nav toggle */
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
