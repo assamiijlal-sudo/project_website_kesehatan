@@ -2,8 +2,16 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
+<script>
+  /* Terapkan tema tersimpan SEBELUM halaman digambar, biar gak "kedip" */
+  (function () {
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kesehatan</title>
+<title>Project Website kesehatan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -88,7 +96,7 @@
   <footer class="site-footer">
   <div class="wrap footer-row">
     <span>© 2026 Kesehatan. Dibuat untuk hidup yang lebih tenang.</span>
-    <span class="version">v1.0.4</span>
+    <span class="version">v1.0.5</span>
   </div>
 </footer>
 

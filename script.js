@@ -1,13 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ---------- Dark mode toggle ---------- */
+  /* Catatan: penerapan tema saat halaman pertama dibuka sudah ditangani
+     oleh inline script di <head>, supaya tidak ada "kedipan" ke mode terang
+     dulu sebelum berubah ke gelap. Di sini cukup tangani klik tombolnya saja. */
   const themeToggle = document.getElementById('themeToggle');
   const root = document.documentElement;
-
-  // terapkan tema yang tersimpan dari kunjungan sebelumnya
-  if (localStorage.getItem('theme') === 'dark') {
-    root.setAttribute('data-theme', 'dark');
-  }
 
   themeToggle.addEventListener('click', () => {
     const isDark = root.getAttribute('data-theme') === 'dark';
