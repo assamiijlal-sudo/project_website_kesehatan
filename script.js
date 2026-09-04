@@ -17,26 +17,29 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* Active link highlight berdasarkan halaman saat ini */
-const navAnchors = document.querySelectorAll('.nav-links a');
-const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const navAnchors = document.querySelectorAll('.nav-links a');
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
-navAnchors.forEach(a => {
-  const linkPage = a.getAttribute('href');
-  a.classList.toggle('active', linkPage === currentPage);
-});
+  navAnchors.forEach(a => {
+    const linkPage = a.getAttribute('href');
+    a.classList.toggle('active', linkPage === currentPage);
+  });
 
   /* Animated stat counters */
   const stats = document.querySelectorAll('.stat-num');
+  const COUNT_DURATION = 500; // durasi animasi hitung, dalam milidetik (500 = 0.5 detik)
+
   const animateCount = (el) => {
     const target = parseInt(el.dataset.count, 10);
-    let current = 0;
-    const step = Math.max(1, Math.round(target / 30));
-    const tick = () => {
-      current = Math.min(target, current + step);
-      el.textContent = current;
-      if (current < target) requestAnimationFrame(tick);
+    let startTime = null;
+
+    const tick = (timestamp) => {
+      if (startTime === null) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / COUNT_DURATION, 1);
+      el.textContent = Math.round(progress * target);
+      if (progress < 1) requestAnimationFrame(tick);
     };
-    tick();
+    requestAnimationFrame(tick);
   };
 
   const statObserver = new IntersectionObserver((entries, obs) => {
